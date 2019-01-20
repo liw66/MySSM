@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<description>Shiro安全配置</description>
+	<!-- 扫描注入realm -->
+	<context:component-scan base-package="com.myssm"
+		use-default-filters="false">
+		<!--Use-dafault-filters=false的情况下context:exclude-filter指定的不扫描context:include-filter指定的扫描 -->
+		<!-- <context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" /> -->
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Service" />
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Repository" />
+	</context:component-scan>
+	<!--securityManager是shiro的核心，初始化时协调各个模块运行 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<!--单个realm使用realm,如果有多个realm，使用realms属性代替 -->
+		<property name="realm" ref="memberRealm" />
+		<property name="cacheManager" ref="shiroEhcacheManager" />
+	</bean>
+	<!--realm配置，realm是shiro的桥梁，它主要是用来判断subject是否可以登录及权限等 -->
+	<bean id="memberRealm" class="com.myssm.shiro.MemberRealm">
+		<property name="cacheManager" ref="shiroEhcacheManager" />
+	</bean>
+	<!-- <property name="memberService" ref="memberService"/></bean> 不扫描可采用此方法注入 -->
+	<!--shiro过滤器配置，bean的id值须与web中的filter-name的值相同 -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/login/index" /><!-- 没有登录默认跳转的页面 -->
+		<property name="successUrl" value="/index/index" /><!-- 登录成功默认跳转页面 -->
+		<property name="unauthorizedUrl" value="/login/index" /><!--没有权限默认跳转的页面 -->
+		<property name="filterChainDefinitions">
+			<value>
+				/login/index = anon
+				/logout/index = anon
+                /index/index = authc  
+                /member/* = authc  
+			</value>
+		</property>
+	</bean>
+	<!-- 用户授权/认证信息Cache, 采用EhCache 缓存 -->
+	<bean id="shiroEhcacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:conf/ehcache-shiro.xml" />
+	</bean>
+	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+	
+    <!-- AOP式方法级权限检查 -->  
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"  
+        depends-on="lifecycleBeanPostProcessor">  
+        <property name="proxyTargetClass" value="true" />  
+    </bean>  
+
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">  
+        <property name="securityManager" ref="securityManager" />  
+    </bean>  
+	
+</beans>

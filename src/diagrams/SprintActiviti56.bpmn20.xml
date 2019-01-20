@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="DeveloperWorkExam" name="DeveloperWorkExam">
+    <startEvent id="startevent1" name="准备面试"></startEvent>
+    <endEvent id="endevent1" name="面试通过"></endEvent>
+    <receiveTask id="receivetask1" name="笔试以及面试通过">
+      <extensionElements>
+        <activiti:executionListener event="start" class="com.myssm.activiti.DeveloperKnowledgeExamListener"></activiti:executionListener>
+      </extensionElements>
+    </receiveTask>
+    <receiveTask id="receivetask2" name="人事面试">
+      <extensionElements>
+        <activiti:executionListener event="start" class="com.myssm.activiti.HumanResourceExamListener"></activiti:executionListener>
+      </extensionElements>
+    </receiveTask>
+    <sequenceFlow id="flow1" name="" sourceRef="startevent1" targetRef="receivetask1"></sequenceFlow>
+    <sequenceFlow id="flow2" name="" sourceRef="receivetask1" targetRef="receivetask2"></sequenceFlow>
+    <sequenceFlow id="flow3" name="" sourceRef="receivetask2" targetRef="endevent1"></sequenceFlow>
+    <sequenceFlow id="flow4" name="" sourceRef="receivetask1" targetRef="endevent1"></sequenceFlow>
+  </process>
+</definitions>

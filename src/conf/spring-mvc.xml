@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		">
+	<!-- 启动SpringMVC的注解功能，它会自动注册HandlerMapping、HandlerAdapter、ExceptionResolver的相关实例 -->
+	<mvc:annotation-driven />
+	<context:component-scan base-package="com.myssm"
+		use-default-filters="false">
+		<!--Use-dafault-filters=false的情况下context:exclude-filter指定的不扫描context:include-filter指定的扫描 -->
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+		<!-- <context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Service" />
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Repository" /> -->
+	</context:component-scan>
+	<!-- 静态资源跳过 -->
+	<mvc:resources mapping="/ace/assets/**" location="/ace/assets/" />
+	<mvc:resources mapping="/bui/assets/**" location="/bui/assets/" />
+	<!-- 对模型视图名称的解析，在请求时模型视图名称添加前后缀 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/ace/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+	<!-- 定时任务 -->
+	<!-- <bean id="SpringQtzJob" class="com.myssm.quartz.SpringQtz" /> <bean 
+		id="SpringQtzJobMethod" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean"> 
+		<property name="targetObject"> <ref bean="SpringQtzJob" /> </property> <property 
+		name="targetMethod"> 要执行的方法名称 <value>execute</value> </property> </bean> -->
+	<!-- ======================== 调度触发器 ======================== -->
+	<!-- <bean id="CronTriggerFactoryBean" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean"> 
+		<property name="jobDetail" ref="SpringQtzJobMethod"></property> <property 
+		name="cronExpression" value="*/5 * * * * ?"></property> </bean> -->
+
+	<!-- ======================== 调度工厂 ======================== -->
+	<!-- <bean id="SpringJobSchedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean"> 
+		<property name="triggers"> <list> <ref bean="CronTriggerFactoryBean" /> </list> 
+		</property> </bean> -->
+
+	<!-- 创建流程引擎配置对象 -->
+	<!-- <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
+		<property name="dataSource" ref="dataSource" />
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="databaseSchemaUpdate" value="true" />
+		<property name="mailServerHost" value="localhost" />
+		<property name="mailServerPort" value="5025" />
+		<property name="jpaHandleTransaction" value="true" />
+		<property name="jpaCloseEntityManager" value="true" />
+		<property name="jobExecutorActivate" value="false" />
+		使用spring的自动资源加载部署方式部署
+		<property name="deploymentResources" value="classpath*:diagrams/*.bpmn20.xml" />
+
+	</bean> -->
+
+	<!-- 创建流程引擎对象 -->
+	<!-- <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
+		<property name="processEngineConfiguration" ref="processEngineConfiguration" />
+	</bean>
+	<bean id="identityService" factory-bean="processEngine"
+		factory-method="getIdentityService" />
+	<bean id="formService" factory-bean="processEngine"
+		factory-method="getFormService" />
+	<bean id="repositoryService" factory-bean="processEngine"
+		factory-method="getRepositoryService" />
+	<bean id="runtimeService" factory-bean="processEngine"
+		factory-method="getRuntimeService" />
+	<bean id="taskService" factory-bean="processEngine"
+		factory-method="getTaskService" />
+	<bean id="historyService" factory-bean="processEngine"
+		factory-method="getHistoryService" />
+	<bean id="managementService" factory-bean="processEngine"
+		factory-method="getManagementService" /> -->
+</beans>
