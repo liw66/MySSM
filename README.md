@@ -6,7 +6,7 @@ SpringMVC</br>
 MyBatis</br>
 ###########环境依赖</br>
 jdk1.6</br>
-tomact7 >>timeout 450s</br>
+tomcat7 >>timeout 450s</br>
 ###########访问地址</br>
 http://localhost:8080/MySSM/login/index</br>
 ###########登录用户</br>
