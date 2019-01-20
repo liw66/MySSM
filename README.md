@@ -1,18 +1,18 @@
 MySSM
 ===========================
-###########使用框架
-Spring
-SpringMVC
-MyBatis
-###########环境依赖
-jdk1.6
-tomact7 >>timeout 450s
-###########访问地址
-http://localhost:8080/MySSM/login/index
-###########登录用户
-admin
-admin
-###########目录结构描述
+###########使用框架</br>
+Spring</br>
+SpringMVC</br>
+MyBatis</br>
+###########环境依赖</br>
+jdk1.6</br>
+tomact7 >>timeout 450s</br>
+###########访问地址</br>
+http://localhost:8080/MySSM/login/index</br>
+###########登录用户</br>
+admin</br>
+admin</br>
+###########目录结构描述</br>
 ├── README.md                   // help
 ├── db.sql                      // mysql数据库文件
 ├──src
