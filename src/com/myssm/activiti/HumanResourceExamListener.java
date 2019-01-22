@@ -18,9 +18,6 @@ import org.activiti.engine.delegate.JavaDelegate;
       </extensionElements>  
     </receiveTask>
     
- * @author longgangbai
- * 
- * 2011-12-18  上午12:37:01
  */
 public class HumanResourceExamListener implements JavaDelegate {
 	  private Logger logger=Logger.getLogger(HumanResourceExamListener.class.getName());
