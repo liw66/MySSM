@@ -121,7 +121,6 @@ public class StringUtil {
 	 * 将以separator分割的字符串str按cnt个拆分开
 	 * 
 	 * @return String[]
-	 * @author Administrator 2009-12-3
 	 */
 	public static String[] subStrToArray(String str, String separator, int cnt) {
 		String[] arr = StringUtil.Str2Strs(str, separator);
@@ -528,20 +527,6 @@ public class StringUtil {
 	/**
 	 * 
 	 * 方法名称:isNull
-	 * <p>
-	 * 方法描述:判断是字符串是否为空
-	 * <p>
-	 * 参数:
-	 * 
-	 * @param str
-	 *            字符串 参数:
-	 * @return boolean
-	 *         <p>
-	 *         <p>
-	 * @author HJun
-	 *         <p>
-	 * @date Sep 2, 2009
-	 *       <p>
 	 */
 	public static boolean isNull(String str) {
 		if (null == str || "".equals(str.trim()))
@@ -552,20 +537,6 @@ public class StringUtil {
 	/**
 	 * 
 	 * 方法名称:isNull
-	 * <p>
-	 * 方法描述: 判断结果集是否为空
-	 * <p>
-	 * 参数:
-	 * 
-	 * @param list
-	 *            结果集对象 参数:
-	 * @return boolean
-	 *         <p>
-	 *         <p>
-	 * @author HJun
-	 *         <p>
-	 * @date Sep 2, 2009
-	 *       <p>
 	 */
 	public static boolean isNull(List list) {
 		if (null == list || list.size() == 0)
@@ -576,20 +547,6 @@ public class StringUtil {
 	/**
 	 * 
 	 * 方法名称:isNull
-	 * <p>
-	 * 方法描述: 判断字符串数组是否为空
-	 * <p>
-	 * 参数:
-	 * 
-	 * @param str
-	 *            String[] 字符串数组 参数:
-	 * @return boolean
-	 *         <p>
-	 *         <p>
-	 * @author HJun
-	 *         <p>
-	 * @date Sep 2, 2009
-	 *       <p>
 	 */
 	public static boolean isNull(String[] str) {
 		if (null == str || str.length == 0)
@@ -681,7 +638,6 @@ public class StringUtil {
 
 	/**
 	 * @return String
-	 * @author Administrator 2009-9-20
 	 */
 	public static String toString(List list) {
 		StringBuffer reStr = new StringBuffer("");
@@ -757,7 +713,6 @@ public class StringUtil {
 	 * @param str
 	 *            待转换的字符串
 	 * @return String 转换后的字符串
-	 * @author zhangg
 	 */
 	public static String replace4XML(String str) {
 		if (str == null)
@@ -786,11 +741,6 @@ public class StringUtil {
 	 * 
 	 * 方法名称：zero 方法描述：设置小数，前面没有0增加0
 	 * 
-	 * @param str
-	 * @return
-	 * @return String
-	 * @author HJun
-	 * @version 1.0 Dec 17, 2009
 	 */
 	public static String zero(String str) {
 		if (str.startsWith(".")) {
@@ -1051,7 +1001,7 @@ public class StringUtil {
 
 	/**
 	 * 
-	 * @author zhangling 在模糊查询中过滤容易引发SQL语句执行异常的符号
+	 * 在模糊查询中过滤容易引发SQL语句执行异常的符号
 	 */
 	public static String ReplaceSqlLike(String strQuery) {
 		String strRet = strQuery;
