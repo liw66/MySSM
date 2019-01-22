@@ -18,9 +18,6 @@ import org.activiti.engine.delegate.JavaDelegate;
       </extensionElements>
     </receiveTask>
     
- * @author longgangbai
- * 
- * 2011-12-18  上午12:38:24
  */
 public class DeveloperKnowledgeExamListener implements JavaDelegate {
    private Logger logger=Logger.getLogger(DeveloperKnowledgeExamListener.class.getName());
