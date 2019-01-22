@@ -6,17 +6,7 @@ import com.myssm.util.Page;
 import com.myssm.util.PageState;
 import com.myssm.util.PageUtil;
 
-/**   
- *Title:     
- *Description:     
- *Copyright: Copyright (c) 2011   
- *Company:http://liuzidong.iteye.com/    
- *Makedate:2011-5-23 下午03:31:03   
- * @author    
- * @version 1.0   
- * @since 1.0    
- *   
- */
+
 public class BaseController {
 	
 	/**
