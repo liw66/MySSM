@@ -415,18 +415,8 @@ public class FileUtil  {
     }
  
     /**
-     * 批量修改文件名称工具 <b>function:</b> 将指定目录下的文件的type类型的文件，进行重命名，命名后的文件将去掉type
-     * <p>
-     * example: 如果type = html； index.html.html -> index.html
-     * </p>
-     * <p>
-     * example: 如果type = zh_CN； index.html.zh_CN -> index.html
-     * </p>
-     * <p>
-     * batchRename("F:\\server\\chat-tomcat-7.0.32\\webapps\\jwchat", "zh_CN");
-     * </p>
+     * 批量修改文件名称工具
      * 
-     * @author hoojo
      * @createDate 2012-5-16 下午02:16:48
      * @param path
      * @param type
