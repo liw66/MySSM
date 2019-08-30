@@ -268,7 +268,6 @@ public class ZipUtil {
             if (f1.isDirectory()) {  
   
             } else {  
-                //   
                 fr = new FileReader(fromPath);  
                 br = new BufferedReader(fr);  
                 String temp = "";  
@@ -276,7 +275,6 @@ public class ZipUtil {
                 while ((line = br.readLine()) != null) {  
                     temp += line;  
                 }  
-                // �?  
                 File f2 = new File(toPath);  
                 f2.mkdir();  
                 File f3 = new File(f2, f1.getName());  
