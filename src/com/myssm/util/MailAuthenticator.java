@@ -4,7 +4,7 @@ import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 
 public class MailAuthenticator extends Authenticator  {
-	String username = null;//用户名
+    String username = null;//用户名
     String password = null;//密码
 
     public MailAuthenticator() {
